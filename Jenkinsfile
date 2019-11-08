@@ -3,10 +3,18 @@ properties([
   ])
 node() {
   cleanWs()
-  checkout scm
-  sh "make"
-  sh "./main"
   
-  archiveArtifacts artifacts: 'main'  
+  stage("checkout"){  
+    checkout scm
+  }
+  
+  stage("build"){ 
+    sh "make"
+    sh "./main"
+  }
+  
+  stage("archivage"){ 
+    archiveArtifacts artifacts: 'main'
+  }
   
 }
