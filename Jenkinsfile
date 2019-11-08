@@ -5,7 +5,8 @@ node() {
   cleanWs()
   checkout scm
   sh "make"
-  sh "./main"  
+  sh "./main"
+  
   archiveArtifacts artifacts: 'main'  
   
 }
